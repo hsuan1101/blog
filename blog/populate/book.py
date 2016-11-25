@@ -19,12 +19,8 @@ def populate():
         book.author = authors[n]
         book.publisher = book.author
         book.pubDate = datetime.datetime.today()
-        book.version = '1'
         book.price = 1000
         book.save()
-        
-        
-        
     print('done')
     
 if __name__ == '__main__':

@@ -5,27 +5,18 @@
 <title>部落格</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
-<link rel="stylesheet" href="{% static 'book/css/book.css' %}">
 </head>
 <body>
-{% include 'main/menu.html' %}
-<h2>歡迎來到我的部落格</h2>
+<h2>歡迎來到我的書籍區</h2>
 <br>
-{% for items in itemsList %}
-  {% for item in items %}
-    {% if forloop.first %}
-      <h3>{{ item.title }}</h3>
-      <p>發表時間:{{ item.pubDateTime|date:'Y-m-d H:i' }}</p>
-      <div class=articleContent>{{ item.content|linebreaks|truncatechars_html:30 }}</div>
-      <p>讚:{{ item.likes }}</p>
-    {% else %}
-      <p>
-        <span class=comment>{{ item.content }}</span><br>
-        <span class=commentTime>{{ item.pubDateTime|date:'m 月 d 日 H:i'}}</span>
-      </p>
-    {% endif %}
-  {% endfor %}
-<hr>
+
+{% for book in books %}
+   <h3>書名：{{ book.title }}</h3>
+   <p>作者：{{ book.author }}</p>
+   <p>出版商：{{ book.publisher }}</p>
+   <p>出版日期：{{ book.pubDate|date:'Y-m-d' }}</p>
+   <p>版次：{{ book.version }}</p>
+   <p>售價：{{ book.price }}</p>
 {% endfor %}
 <br>
 </body>
